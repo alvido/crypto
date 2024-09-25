@@ -2,11 +2,11 @@
     &__list {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
+        justify-content: space-between;
+        gap: 20px;
 
         @include tablet {
-            gap: 20px;
+            justify-content: center;
         }
 
         @include mobile {
@@ -14,11 +14,11 @@
         }
 
         & li {
-            width: 22%;
+            width: calc(25% - 15px);
             cursor: pointer;
 
             @include tablet {
-                width: 31%;
+                width: calc(33% - 11px);
             }
 
             @include mobile {

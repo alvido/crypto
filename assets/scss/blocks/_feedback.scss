@@ -6,4 +6,12 @@
             flex-direction: column;
         }
     }
+
+    & .map {
+        width: 100%;
+
+        @include phone {
+            height: 400px;
+        }
+    }
 }
