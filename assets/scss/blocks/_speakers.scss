@@ -10,9 +10,13 @@
         justify-content: space-between;
         gap: 30px 20px;
 
+        @include mobile {
+            gap: 10px;
+        }
+
         & li {
             position: relative;
-            max-width: 31%;
+            max-width: 22%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -24,11 +28,11 @@
             overflow: hidden;
 
             @include tablet {
-                max-width: 48%;
+                max-width: 31%;
             }
 
-            @include phone {
-                max-width: none;
+            @include mobile {
+                max-width: calc(50% - 5px);
             }
 
             &::after {

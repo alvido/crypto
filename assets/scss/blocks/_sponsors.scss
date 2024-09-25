@@ -9,6 +9,10 @@
             gap: 20px;
         }
 
+        @include mobile {
+            gap: 10px;
+        }
+
         & li {
             width: 22%;
             cursor: pointer;
@@ -18,15 +22,8 @@
             }
 
             @include mobile {
-                width: 48%;
+                width: calc(50% - 5px);
             }
-
-            @include phone {
-                width: 100%;
-            }
-
-
-
 
             & a {
                 position: relative;

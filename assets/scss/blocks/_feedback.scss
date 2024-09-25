@@ -1,0 +1,9 @@
+.feedback {
+    & .wrapper {
+        align-items: flex-start;
+
+        @include tablet {
+            flex-direction: column;
+        }
+    }
+}
