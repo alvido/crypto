@@ -10,15 +10,15 @@
     gap: 8px;
 
     padding: 0 20px;
-    @include fluid-text(16, 16);
-    font-weight: 500;
-    border-radius: var(--border-radius);
+    @include fluid-text(20, 16);
+    font-weight: 700;
+    color: var(--color-purple);
+    border-radius: var(--border-radius-small);
 
     border: 2px solid var(--color-purple);
 
     @include hover {
-        color: var(--color-blue);
-        background: var(--color-transparent);
-
+        color: var(--color-white);
+        background: var(--color-purple);
     }
 }

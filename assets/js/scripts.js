@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Выбираем бургер-кнопку и навигацию
   let burgerButton = document.getElementById("burgerButton");
   let navigation = document.querySelector(".navigation");
-  let links = document.querySelectorAll(".navigation__link");
+  let links = document.querySelectorAll(".navigation a");
 
   // Если бургер-кнопка существует, добавляем обработчик события
   if (burgerButton) {
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     link.addEventListener("click", function (e) {
       burgerButton.classList.remove("burger--active");
       navigation.classList.remove("navigation--active");
-      console.log("link", link);
     });
   });
 });
@@ -65,4 +64,16 @@ VANTA.WAVES({
   waveHeight: 20.00,
   zoom: 0.7,
 })
+//
+
+// speakers //
+document.addEventListener("DOMContentLoaded", function () {
+  let speakers = document.querySelectorAll(".speakers__list li");
+
+  speakers.forEach((speaker) => {
+    speaker.addEventListener("click", function (e) {
+      this.classList.toggle("--active");
+    });
+  });
+});
 //

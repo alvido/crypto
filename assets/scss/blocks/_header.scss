@@ -10,9 +10,4 @@
         position: fixed;
         background: var(--color-black)
     }
-
-    &__wrapper {
-        @include flex-center;
-        justify-content: space-between;
-    }
 }

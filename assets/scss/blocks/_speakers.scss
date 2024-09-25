@@ -1,0 +1,94 @@
+.speakers {
+    background: radial-gradient(22.21% 39.61% at 84.2% 17.28%, rgba(122, 93, 228, 0.15) 0%,
+            rgba(122, 93, 228, 0) 100%), radial-gradient(20.07% 30.61% at 15.94% 62.28%, rgba(122, 93, 228, 0.15) 0%,
+            rgba(122, 93, 228, 0) 100%), linear-gradient(0deg, #000, #000);
+
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px 20px;
+
+        & li {
+            position: relative;
+            max-width: 31%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1;
+            background: rgb(122, 93, 228);
+            background: radial-gradient(circle, rgba(122, 93, 228, 1) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            overflow: hidden;
+
+            @include tablet {
+                max-width: 48%;
+            }
+
+            @include phone {
+                max-width: none;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgb(122, 93, 228);
+                background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+                opacity: 0;
+                transition-duration: var(--transition-duration);
+            }
+
+            &.--active {
+                &::after {
+                    opacity: 0.6;
+                }
+
+                & h3 {
+                    opacity: 1;
+                }
+
+                & img {
+                    scale: 1.1;
+                }
+            }
+
+            @include hover {
+
+                &::after {
+                    opacity: 0.6;
+                }
+
+                & h3 {
+                    opacity: 1;
+                }
+
+                & img {
+                    scale: 1.1;
+                }
+            }
+
+            & img {
+                width: 100%;
+                -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+                position: relative;
+                border-radius: 50%;
+            }
+
+            & h3 {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                translate: -50% -50%;
+                text-align: center;
+                width: 100%;
+                opacity: 0;
+                transition-duration: var(--transition-duration);
+                z-index: 1;
+            }
+        }
+    }
+}

@@ -1,2 +1,30 @@
 .about {
+    
+
+    & .wrapper {
+        @include tablet {
+            flex-direction: column;
+        }
+    }
+
+    & .col {
+        position: relative;
+        align-self: stretch;
+
+        &:first-child {
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: var(--color-black);
+                opacity: .4;
+            }
+        }
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 }

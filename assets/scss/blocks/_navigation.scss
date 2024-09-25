@@ -3,15 +3,21 @@
     gap: 50px;
 
     @include tablet {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         position: absolute;
         top: 0;
         left: -100%;
         padding: 100px 0;
-        align-items: flex-start;
         width: 100%;
         height: 100vh;
         background: var(--color-black);
         transition-duration: var(--transition-duration);
+
+        & .button {
+            order: 1;
+        }
 
         &.navigation--active {
             left: 0;
@@ -20,7 +26,7 @@
 
     &__list {
         @include flex-center;
-        gap: 40px;
+        gap: 30px;
 
         @include tablet {
             flex-direction: column;

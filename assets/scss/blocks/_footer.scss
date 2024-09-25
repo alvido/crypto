@@ -1,6 +1,32 @@
 .footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
+    background: radial-gradient(32.69% 87.5% at 63.92% 95.99%, rgba(137, 137, 137, 0.2) 0%,
+     rgba(137, 137, 137, 0) 100%), linear-gradient(0deg, var(--color-purple), #040D1A);
+    padding: 30px 0;
+
+    & .wrapper {
+        @include tablet {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    &__navigation {
+        & ul {
+            flex-direction: row;
+
+            @include phone {
+                flex-direction: column;
+            }
+        }
+
+        & a {
+            @include hover {
+                color: var(--color-pink) !important;
+
+                &::after {
+                    background: var(--color-pink) !important;
+                }
+            }
+        }
+    }
 }

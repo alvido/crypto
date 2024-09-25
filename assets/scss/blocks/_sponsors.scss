@@ -1,0 +1,55 @@
+.sponsors {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+
+        @include tablet {
+            gap: 20px;
+        }
+
+        & li {
+            width: 22%;
+            cursor: pointer;
+
+            @include tablet {
+                width: 31%;
+            }
+
+            @include mobile {
+                width: 48%;
+            }
+
+            @include phone {
+                width: 100%;
+            }
+
+
+
+
+            & a {
+                position: relative;
+
+                @include hover {
+                    &::after {
+                        opacity: .6;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: var(--color-purple);
+                    opacity: 0;
+                    transition-duration: var(--transition-duration);
+                }
+            }
+
+            & img {
+                width: 100%;
+            }
+        }
+    }
+}

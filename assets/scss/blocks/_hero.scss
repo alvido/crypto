@@ -6,12 +6,27 @@
     &__wrapper {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
     & h1 {
+        @include fluid-text(92, 48);
         font-family: "Tiny5", system-ui;
         text-transform: uppercase;
-        color: var(--color-purple);
+        // color: var(--color-purple);
+        // -webkit-text-stroke-width: 0.0148148148em;
+        // -webkit-text-stroke-color: var(--color-purple);
+        // color: transparent;
+        text-shadow: 0.0222222222em -0.0222222222em var(--color-purple), 0.0444444444em -0.0444444444em var(--color-pink), 
+        -0.0222222222em 0.0222222222em var(--color-purple), -0.0444444444em 0.0444444444em var(--color-pink);
+    }
+
+    & p {
+        max-width: 800px;
+        text-wrap: pretty;
+    }
+
+    & .button {
+        margin-top: 30px;
     }
 }
