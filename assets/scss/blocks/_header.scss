@@ -1,18 +1,18 @@
 .header {
-    position: relative;
-    padding: 20px 0;
-
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 10px 0;
 
     &.fixed {
         position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        z-index: 2;
-        background: var(--color-white);
+        background: var(--color-black)
+    }
+
+    &__wrapper {
+        @include flex-center;
+        justify-content: space-between;
     }
 }

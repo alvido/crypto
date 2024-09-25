@@ -1,3 +1,17 @@
 .hero {
+    @include flex-center;
+    height: 100vh;
+    min-height: 600px;
 
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    & h1 {
+        font-family: "Tiny5", system-ui;
+        text-transform: uppercase;
+        color: var(--color-purple);
+    }
 }

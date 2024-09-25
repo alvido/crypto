@@ -2,16 +2,30 @@
     @include reset-button;
     @include squere(40px);
     @include flex-center;
+    display: none;
     position: relative;
     z-index: 2;
+
+    @include tablet {
+        display: flex;
+    }
+
+    @include hover {
+
+        &::before,
+        &::after,
+        & span {
+            background: var(--color-purple);
+        }
+    }
 
     &::before,
     &::after {
         content: '';
         display: block;
-        width: 30px;
+        width: 90%;
         height: 3px;
-        background: black;
+        background: var(--color-white);
         border-radius: 3px;
 
         position: absolute;
@@ -21,15 +35,19 @@
     }
 
     &::before {
-        top: 13px;
+        top: 6px;
     }
 
     &::after {
-        bottom: 13px;
+        bottom: 6px;
     }
 
     & span {
         font-size: 0;
+        width: 90%;
+        height: 3px;
+        background: var(--color-white);
+        transition-duration: var(--transition-duration);
     }
 
     &.burger--active {
@@ -49,6 +67,10 @@
         &::after {
             rotate: -45deg;
 
+        }
+
+        & span {
+            opacity: 0;
         }
     }
 }
