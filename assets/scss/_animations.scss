@@ -12,24 +12,30 @@
     }
 }
 
-@keyframes rorateElements {
+@keyframes rorateRight {
     0% {
         rotate: 0;
     }
 
-    25% {
-        rotate: 15deg;
-    }
-
     50% {
-        rotate: 0;
-    }
-
-    75% {
-        rotate: -15deg;
+        rotate: 180deg;
     }
 
     100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes rorateLeft {
+    0% {
         rotate: 0;
+    }
+
+    50% {
+        rotate: -180deg;
+    }
+
+    100% {
+        rotate: -360deg;
     }
 }

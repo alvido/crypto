@@ -9,6 +9,7 @@
 
     & .map {
         width: 100%;
+        border-radius: var(--border-radius);
 
         @include phone {
             height: 400px;

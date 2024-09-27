@@ -93,61 +93,118 @@ const countdown = setInterval(() => {
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Отображаем результат в элементе с id="countdown"
-  document.getElementById('countdown').innerHTML =
-    days + " д " + hours + " ч " + minutes + " м " + seconds + " с ";
+  // Отображаем результат в отдельных элементах
+  document.getElementById('days').innerHTML = days;
+  document.getElementById('hours').innerHTML = hours;
+  document.getElementById('minutes').innerHTML = minutes;
+  document.getElementById('seconds').innerHTML = seconds;
 
   // Если обратный отсчет завершился, выводим сообщение
   if (distance < 0) {
     clearInterval(countdown);
-    document.getElementById('countdown').innerHTML = "Таймер завершен!";
+    document.getElementById('days').innerHTML = "0";
+    document.getElementById('hours').innerHTML = "0";
+    document.getElementById('minutes').innerHTML = "0";
+    document.getElementById('seconds').innerHTML = "0";
+    document.getElementById('timer').innerHTML = "Таймер завершен!";
   }
 }, 1000);
-//
-
 
 //
 
-const year = new Date().getFullYear();
-const fourthOfJuly = new Date(year, 6, 4).getTime();
-const fourthOfJulyNextYear = new Date(year + 1, 6, 4).getTime();
-const month = new Date().getMonth();
+// textarea show //
+document.addEventListener("DOMContentLoaded", function () {
+  let openTextAreaButtons = document.querySelectorAll(".open-textarea");
 
-// countdown
-let timer = setInterval(function () {
 
-  // get today's date
-  const today = new Date().getTime();
+  if (openTextAreaButtons) {
+    openTextAreaButtons.forEach((button) => {
+      button.addEventListener("click", function (e) {
+        e.stopPropagation(); // Остановить всплытие события
+        const nextHiddenArea = this.closest('label').nextElementSibling; // Получаем следующий элемент-сосед
 
-  // get the difference
-  let diff;
-  if (month > 6) {
-    diff = fourthOfJulyNextYear - today;
-  } else {
-    diff = fourthOfJuly - today;
+        if (nextHiddenArea && nextHiddenArea.classList.contains("hidden-area")) {
+          nextHiddenArea.classList.toggle("show"); // Переключаем класс 'show'
+        }
+      });
+    });
   }
+});
 
 
+//
 
+//
+document.addEventListener("DOMContentLoaded", function () {
+  const forms = document.querySelectorAll("form");
 
-  // math
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  forms.forEach(function (form) {
+    form.addEventListener("submit", function (event) {
+      let isValid = true;
+      const requiredFields = form.querySelectorAll("[required]");
 
-  // display
-  document.getElementById("timer").innerHTML =
-    "<div class=\"days\"> \
-  <div class=\"numbers\">" + days + "</div>days</div> \
-<div class=\"hours\"> \
-  <div class=\"numbers\">" + hours + "</div>hours</div> \
-<div class=\"minutes\"> \
-  <div class=\"numbers\">" + minutes + "</div>minutes</div> \
-<div class=\"seconds\"> \
-  <div class=\"numbers\">" + seconds + "</div>seconds</div> \
-</div>";
+      requiredFields.forEach(function (field) {
+        field.classList.remove("error");
 
-}, 1000);
+        if (!validateField(field)) {
+          isValid = false;
+        }
+      });
+
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+  });
+
+  function validateField(field) {
+    let isValid = true;
+
+    // Проверка на заполненность для текстовых, email, number, tel и textarea
+    if (["text", "email", "number", "tel"].includes(field.type) || field.tagName.toLowerCase() === "textarea") {
+      if (!field.value.trim()) {
+        field.classList.add("error");
+        isValid = false;
+      }
+    }
+
+    // Проверка для select
+    if (field.tagName.toLowerCase() === "select") {
+      if (field.value === "") {
+        field.classList.add("error");
+        isValid = false;
+
+        const select2 = field.closest('form').querySelector('.select2');
+        if (select2) {
+          select2.classList.add('error');
+        }
+      } else {
+        const select2 = field.closest('form').querySelector('.select2');
+        if (select2) {
+          select2.classList.remove('error');
+        }
+      }
+    }
+
+    // Проверка для радиокнопок
+    if (field.type === "radio") {
+      const radios = field.closest('form').querySelectorAll(`input[name="${field.name}"]`);
+      let radioChecked = Array.from(radios).some(radio => radio.checked);
+
+      if (!radioChecked) {
+        radios.forEach(function (radio) {
+          radio.classList.add("error");
+        });
+        isValid = false;
+      } else {
+        radios.forEach(function (radio) {
+          radio.classList.remove("error");
+        });
+      }
+    }
+
+    return isValid;
+  }
+});
 
 //
